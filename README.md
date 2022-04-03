@@ -1,4 +1,4 @@
-# Delivery Driver
+# Snowboarder
 
 You can play it [here](https://friarhob.github.io/snowboarder).
 
