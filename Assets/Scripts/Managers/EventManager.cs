@@ -6,20 +6,24 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager Instance;
 
+    public delegate void FinishRun();
+    public static event FinishRun onFinishRun;
+
+    public delegate void SnowboarderCrash();
+    public static event SnowboarderCrash onSnowboarderCrash;
+
     void Awake()
     {
         Instance = Instance ? Instance : this;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void finishRun()
     {
-
+        onFinishRun?.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void snowboarderCrash()
     {
-
+        onSnowboarderCrash?.Invoke();
     }
 }
