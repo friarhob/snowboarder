@@ -12,6 +12,12 @@ public class EventManager : MonoBehaviour
     public delegate void SnowboarderCrash();
     public static event SnowboarderCrash onSnowboarderCrash;
 
+    public delegate void GameOver();
+    public static event GameOver onGameOver;
+
+    public delegate void StartNewGame();
+    public static event StartNewGame onStartNewGame;
+
     void Awake()
     {
         Instance = Instance ? Instance : this;
@@ -25,5 +31,16 @@ public class EventManager : MonoBehaviour
     public void snowboarderCrash()
     {
         onSnowboarderCrash?.Invoke();
+    }
+
+    public void resetGame(float timeToReload)
+    {
+        onGameOver?.Invoke();
+        Invoke("newGame", timeToReload);
+    }
+
+    private void newGame()
+    {
+        onStartNewGame?.Invoke();
     }
 }

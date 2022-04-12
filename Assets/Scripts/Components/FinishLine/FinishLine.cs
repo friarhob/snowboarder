@@ -30,7 +30,7 @@ public class FinishLine : MonoBehaviour
     {
         finishEffect.Play();
 
-        Invoke("ReloadScene", timeToReload);
+        EventManager.Instance.resetGame(timeToReload);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -40,11 +40,5 @@ public class FinishLine : MonoBehaviour
             EventManager.Instance.finishRun();
         }
     }
-
-    void ReloadScene()
-    {
-        SceneManager.LoadScene("MainScene");
-    }
-
 }
 

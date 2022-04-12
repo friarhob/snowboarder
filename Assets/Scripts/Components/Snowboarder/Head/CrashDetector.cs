@@ -28,7 +28,7 @@ public class CrashDetector : MonoBehaviour
         crashEffect.Play();
         GetComponent<AudioSource>().Play();
 
-        Invoke("ReloadScene", timeToReload);
+        EventManager.Instance.resetGame(timeToReload);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -38,10 +38,5 @@ public class CrashDetector : MonoBehaviour
             EventManager.Instance.snowboarderCrash();
             alreadyCrashed = true;
         }
-    }
-
-    void ReloadScene()
-    {
-        SceneManager.LoadScene("MainScene");
     }
 }
