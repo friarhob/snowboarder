@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,18 +12,31 @@ public class CrashDetector : MonoBehaviour
 
     void Start()
     {
+        EventManager.onSnowboarderCrash += this.Bleed;
+
         alreadyCrashed = false;
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-        if(!alreadyCrashed && other.tag == "Ground")
+    void OnDestroy()
+    {
+        EventManager.onSnowboarderCrash -= this.Bleed;
+    }
+
+    private void Bleed()
+    {
+        FindObjectOfType<PlayerController>().Crash();
+        crashEffect.Play();
+        GetComponent<AudioSource>().Play();
+
+        Invoke("ReloadScene", timeToReload);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!alreadyCrashed && other.tag == "Ground")
         {
-            FindObjectOfType<PlayerController>().Crash();
+            EventManager.Instance.snowboarderCrash();
             alreadyCrashed = true;
-            crashEffect.Play();
-            GetComponent<AudioSource>().Play();
-            
-            Invoke("ReloadScene", timeToReload);
         }
     }
 
