@@ -31,7 +31,6 @@ public class CrashDetector : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-
         if (!alreadyCrashed && other.tag == "Ground")
         {
             EventManager.Instance.snowboarderCrash();

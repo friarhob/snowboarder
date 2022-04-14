@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public float score { get; private set; }
-    public bool gameRunning;
+    private bool gameRunning;
 
     void Awake()
     {
