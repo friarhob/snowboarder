@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if(canMove)
+        if (canMove)
         {
             RotateSnowboarder();
             BoostSnowboarderSpeed();
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void BoostSnowboarderSpeed()
     {
-        if(Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             levelSurface.speed = boostSpeed;
         }

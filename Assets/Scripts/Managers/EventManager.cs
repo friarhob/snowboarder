@@ -33,13 +33,18 @@ public class EventManager : MonoBehaviour
         onSnowboarderCrash?.Invoke();
     }
 
-    public void resetGame(float timeToReload)
+    public void gameOver()
     {
         onGameOver?.Invoke();
+    }
+
+    public void resetGame(float timeToReload)
+    {
+        gameOver();
         Invoke("newGame", timeToReload);
     }
 
-    private void newGame()
+    public void newGame()
     {
         onStartNewGame?.Invoke();
     }

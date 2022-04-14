@@ -13,22 +13,21 @@ public class CrashDetector : MonoBehaviour
     void Start()
     {
         EventManager.onSnowboarderCrash += this.Bleed;
+        EventManager.onStartNewGame += this.ResetNewGame;
 
-        alreadyCrashed = false;
+        ResetNewGame();
     }
 
     void OnDestroy()
     {
         EventManager.onSnowboarderCrash -= this.Bleed;
+        EventManager.onStartNewGame -= this.ResetNewGame;
     }
 
     private void Bleed()
     {
         FindObjectOfType<PlayerController>().Crash();
         crashEffect.Play();
-        GetComponent<AudioSource>().Play();
-
-        EventManager.Instance.resetGame(timeToReload);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -38,5 +37,10 @@ public class CrashDetector : MonoBehaviour
             EventManager.Instance.snowboarderCrash();
             alreadyCrashed = true;
         }
+    }
+
+    void ResetNewGame()
+    {
+        alreadyCrashed = false;
     }
 }

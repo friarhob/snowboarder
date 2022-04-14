@@ -12,25 +12,17 @@ public class FinishLine : MonoBehaviour
     void Start()
     {
         EventManager.onFinishRun += this.GenerateSparks;
-        EventManager.onFinishRun += this.PlaySound;
     }
 
     void OnDestroy()
     {
         EventManager.onFinishRun -= this.GenerateSparks;
-        EventManager.onFinishRun -= this.PlaySound;
     }
 
-    private void PlaySound()
-    {
-        GetComponent<AudioSource>().Play();
-    }
 
     private void GenerateSparks()
     {
         finishEffect.Play();
-
-        EventManager.Instance.resetGame(timeToReload);
     }
 
     void OnTriggerEnter2D(Collider2D other)
