@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
         {
             score += 37 * Time.deltaTime;
         }
-        Debug.Log("Score: " + score);
     }
 
     private void ForwardFlip()
