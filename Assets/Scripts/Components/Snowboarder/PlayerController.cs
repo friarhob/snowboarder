@@ -15,9 +15,16 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        EventManager.onSnowboarderCrash += this.Crash;
+
         canMove = true;
         playerRigidbody = GetComponent<Rigidbody2D>();
         levelSurface = FindObjectOfType<SurfaceEffector2D>();
+    }
+
+    void OnDestroy()
+    {
+        EventManager.onSnowboarderCrash -= this.Crash;
     }
 
     void Update()
