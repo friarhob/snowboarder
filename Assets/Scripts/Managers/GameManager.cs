@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public float score { get; private set; }
+    public bool gameRunning;
+
     void Awake()
     {
         Instance = Instance ? Instance : this;
@@ -16,23 +19,53 @@ public class GameManager : MonoBehaviour
     {
         EventManager.onBackwardFlip += this.BackwardFlip;
         EventManager.onForwardFlip += this.ForwardFlip;
+        EventManager.onGameOver += this.StopGame;
+        EventManager.onStartNewGame += this.StartGame;
+
+        StartGame();
     }
 
     void OnDestroy()
     {
-
         EventManager.onBackwardFlip -= this.BackwardFlip;
         EventManager.onForwardFlip -= this.ForwardFlip;
+        EventManager.onGameOver -= this.StopGame;
+        EventManager.onStartNewGame -= this.StartGame;
+    }
+
+    void Update()
+    {
+        if (gameRunning)
+        {
+            score += 37 * Time.deltaTime;
+        }
+        Debug.Log("Score: " + score);
     }
 
     private void ForwardFlip()
     {
-        Debug.Log("Forward Flip!");
+        if (gameRunning)
+        {
+            score += 1000;
+        }
     }
 
     private void BackwardFlip()
     {
-        Debug.Log("Backward Flip!");
+        if (gameRunning)
+        {
+            score += 500;
+        }
     }
 
+    private void StopGame()
+    {
+        gameRunning = false;
+    }
+
+    private void StartGame()
+    {
+        score = 0;
+        gameRunning = true;
+    }
 }
