@@ -26,7 +26,6 @@ public class CrashDetector : MonoBehaviour
 
     private void Bleed()
     {
-        FindObjectOfType<PlayerController>().Crash();
         crashEffect.Play();
     }
 

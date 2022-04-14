@@ -21600,8 +21600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5fbd8145e2ca134b900bb3f39db6bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeAfterWinning: 1
-  timeAfterCrashing: 0.5
+  timeAfterWinning: 1.5
+  timeAfterCrashing: 1
 --- !u!1 &980904413
 GameObject:
   m_ObjectHideFlags: 0

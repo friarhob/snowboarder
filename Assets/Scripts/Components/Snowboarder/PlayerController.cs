@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        EventManager.onSnowboarderCrash += this.Crash;
+        EventManager.onSnowboarderCrash += this.StopMoving;
 
         canMove = true;
         playerRigidbody = GetComponent<Rigidbody2D>();
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 
     void OnDestroy()
     {
-        EventManager.onSnowboarderCrash -= this.Crash;
+        EventManager.onSnowboarderCrash -= this.StopMoving;
     }
 
     void Update()
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Crash()
+    private void StopMoving()
     {
         canMove = false;
     }
