@@ -7,41 +7,32 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] float timeAfterWinning;
-    [SerializeField] float timeAfterCrashing;
-
     void Awake()
     {
         Instance = Instance ? Instance : this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        EventManager.onFinishRun += this.FinishGame;
-        EventManager.onSnowboarderCrash += this.PlayerCrash;
+        EventManager.onBackwardFlip += this.BackwardFlip;
+        EventManager.onForwardFlip += this.ForwardFlip;
     }
 
     void OnDestroy()
     {
-        EventManager.onFinishRun -= this.FinishGame;
-        EventManager.onSnowboarderCrash -= this.PlayerCrash;
+
+        EventManager.onBackwardFlip -= this.BackwardFlip;
+        EventManager.onForwardFlip -= this.ForwardFlip;
     }
 
-    void PlayerCrash()
+    private void ForwardFlip()
     {
-        EventManager.Instance.gameOver();
-        Invoke("CallNewGame", timeAfterCrashing);
+        Debug.Log("Forward Flip!");
     }
 
-    void FinishGame()
+    private void BackwardFlip()
     {
-        EventManager.Instance.gameOver();
-        Invoke("CallNewGame", timeAfterWinning);
+        Debug.Log("Backward Flip!");
     }
 
-    private void CallNewGame()
-    {
-        EventManager.Instance.newGame();
-    }
 }

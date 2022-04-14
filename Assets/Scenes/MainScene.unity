@@ -461,6 +461,8 @@ GameObject:
   - component: {fileID: 103023609}
   - component: {fileID: 103023610}
   - component: {fileID: 103023612}
+  - component: {fileID: 103023613}
+  - component: {fileID: 103023611}
   m_Layer: 0
   m_Name: Snowboarder
   m_TagString: Player
@@ -550,8 +552,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torqueAmount: 0.4
-  boostSpeed: 15
-  normalSpeed: 10
+--- !u!114 &103023611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103023605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89e1693aa8f2ca4c87ab9b5bb6b2664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!58 &103023612
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -568,6 +580,18 @@ CircleCollider2D:
   m_Offset: {x: 0.35, y: 1.1}
   serializedVersion: 2
   m_Radius: 0.35
+--- !u!114 &103023613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103023605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89e1693aa8f2ca4c87ab9b5bb6b2664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &122125600
 GameObject:
   m_ObjectHideFlags: 0
@@ -21600,8 +21624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5fbd8145e2ca134b900bb3f39db6bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeAfterWinning: 1.5
-  timeAfterCrashing: 1
 --- !u!1 &980904413
 GameObject:
   m_ObjectHideFlags: 0
@@ -22371,6 +22393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8f8d63574a39d4cacdda7dc621a29d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeAfterWinning: 1.5
+  timeAfterCrashing: 1
 --- !u!1 &1295858628
 GameObject:
   m_ObjectHideFlags: 0

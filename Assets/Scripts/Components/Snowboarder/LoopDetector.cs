@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class LoopDetector : MonoBehaviour
 {
-    bool isOnAir;
+    private Rigidbody2D myRigidbody2D;
     void Start()
     {
-
+        myRigidbody2D = this.gameObject.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (myRigidbody2D.rotation > 270)
+        {
+            EventManager.Instance.backwardFlip();
+            myRigidbody2D.rotation -= 360;
+        }
 
+        if (myRigidbody2D.rotation < -270)
+        {
+            EventManager.Instance.forwardFlip();
+            myRigidbody2D.rotation += 360;
+        }
     }
 }

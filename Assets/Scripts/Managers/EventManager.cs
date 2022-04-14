@@ -18,6 +18,12 @@ public class EventManager : MonoBehaviour
     public delegate void StartNewGame();
     public static event StartNewGame onStartNewGame;
 
+    public delegate void BackwardFlip();
+    public static event BackwardFlip onBackwardFlip;
+
+    public delegate void ForwardFlip();
+    public static event ForwardFlip onForwardFlip;
+
     void Awake()
     {
         Instance = Instance ? Instance : this;
@@ -47,5 +53,15 @@ public class EventManager : MonoBehaviour
     public void newGame()
     {
         onStartNewGame?.Invoke();
+    }
+
+    public void backwardFlip()
+    {
+        onBackwardFlip?.Invoke();
+    }
+
+    public void forwardFlip()
+    {
+        onForwardFlip?.Invoke();
     }
 }
