@@ -23781,6 +23781,7 @@ GameObject:
   - component: {fileID: 2027521824}
   - component: {fileID: 2027521823}
   - component: {fileID: 2027521826}
+  - component: {fileID: 2027521827}
   m_Layer: 0
   m_Name: Level Sprite Shape
   m_TagString: Ground
@@ -24985,6 +24986,21 @@ SurfaceEffector2D:
   m_UseContactForce: 0
   m_UseFriction: 1
   m_UseBounce: 1
+--- !u!114 &2027521827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027521821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f35a960a906e442897d4e24f3675c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSpeed: 10
+  accelerationMultiplier: 1.3
+  breakMultiplier: 0.7
 --- !u!1 &2037162984
 GameObject:
   m_ObjectHideFlags: 0

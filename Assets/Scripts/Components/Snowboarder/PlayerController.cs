@@ -31,37 +31,12 @@ public class PlayerController : MonoBehaviour
     {
         if (canMove)
         {
-            RotateSnowboarder();
-            BoostSnowboarderSpeed();
+            playerRigidbody.AddTorque(-torqueAmount * Input.GetAxis("Horizontal"));
         }
     }
 
     public void Crash()
     {
         canMove = false;
-    }
-
-    private void BoostSnowboarderSpeed()
-    {
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            levelSurface.speed = boostSpeed;
-        }
-        else
-        {
-            levelSurface.speed = normalSpeed;
-        }
-    }
-
-    private void RotateSnowboarder()
-    {
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            playerRigidbody.AddTorque(torqueAmount);
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            playerRigidbody.AddTorque(-torqueAmount);
-        }
     }
 }
