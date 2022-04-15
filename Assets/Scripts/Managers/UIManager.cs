@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] float timeAfterWinning;
     [SerializeField] float timeAfterCrashing;
+
+    [SerializeField] TextMeshProUGUI scoreText;
 
     void Awake()
     {
@@ -27,6 +30,11 @@ public class UIManager : MonoBehaviour
         EventManager.onStartNewGame -= ReloadScene;
         EventManager.onFinishRun -= this.FinishGame;
         EventManager.onSnowboarderCrash -= this.PlayerCrash;
+    }
+
+    void Update()
+    {
+        scoreText.text = "Score: " + Mathf.FloorToInt(GameManager.Instance.score);
     }
 
     void PlayerCrash()
