@@ -9,12 +9,16 @@ public class AccelerateSurface : MonoBehaviour
     [SerializeField] float accelerationMultiplier;
     [SerializeField] float breakMultiplier;
 
+    private SurfaceEffector2D mySurfaceEffector2D;
+
     private bool canAccelerate;
 
     void Start()
     {
         EventManager.onGameOver += this.BlockAcceleration;
         EventManager.onStartNewGame += this.AllowAcceleration;
+
+        mySurfaceEffector2D = this.gameObject.GetComponent<SurfaceEffector2D>();
 
         AllowAcceleration();
     }
@@ -41,7 +45,7 @@ public class AccelerateSurface : MonoBehaviour
             }
         }
 
-        GetComponent<SurfaceEffector2D>().speed = speed;
+        mySurfaceEffector2D.speed = speed;
     }
 
     private void BlockAcceleration()

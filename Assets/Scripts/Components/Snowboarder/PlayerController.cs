@@ -8,16 +8,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float torqueAmount;
     private bool canMove;
 
-    private Rigidbody2D playerRigidbody;
-    private SurfaceEffector2D levelSurface;
+    private Rigidbody2D myRigidbody;
 
     void Start()
     {
         EventManager.onSnowboarderCrash += this.StopMoving;
 
         canMove = true;
-        playerRigidbody = GetComponent<Rigidbody2D>();
-        levelSurface = FindObjectOfType<SurfaceEffector2D>();
+        myRigidbody = GetComponent<Rigidbody2D>();
     }
 
     void OnDestroy()
@@ -29,7 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canMove)
         {
-            playerRigidbody.AddTorque(-torqueAmount * Input.GetAxis("Horizontal"));
+            myRigidbody.AddTorque(-torqueAmount * Input.GetAxis("Horizontal"));
         }
     }
 

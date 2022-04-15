@@ -8,7 +8,16 @@ Simple prototype developed (and changed to include rules, a game mechanic and re
 
 ## Rules
 
-TBD
+* AD/LeftRight to rotate, WS/UpDown to accelerate/break (also supports joysticks, but I didn't test this throughouly).
+
+* You need to do as much points as possible in your performance.
+
+* You gain points for the time you spend running, and also per loops:
+  - You gain 37 points per second
+  - You gain 500 points for each backward flip
+  - You gain 1000 points for each forward flip
+
+* If you crash your head while playing, the game is over.
 
 ---
 
@@ -16,14 +25,45 @@ TBD
 
 ### Managers
 
-TBD
+_Note: all managers are singletons, working under a_ `DontDestroyOnLoad()` _parent._
+
+* **GameManager** hosts game states, and scoring system.
+
+* **EventManager** is responsible for calling all internal events in the game, as stated by the following table:
+
+| Event Name         | Function to invoke it | Notes                                                                           |
+| ------------------ | --------------------- | ------------------------------------------------------------------------------- |
+| onBackwardFlip     | backwardFlip()        | -                                                                               |
+| onFinishRun        | finishRun()           | Event called once the player passes through the finish line                     |
+| onForwardFlip      | forwardFlip()         | -                                                                               |
+| onGameOver         | gameOver()            | Event called every time a game ends for any reason (either crash or finish line |
+| onSnowboarderCrash | snowboarderCrash()    | -                                                                               |
+| onStartNewGame     | newGame()             | Event not called in the first run                                               |
+
+* **UIManager** controls both the visibility on the score text field and the time waited between a crash/crossing the finish line and starting a new game.
+
+* **SoundManager** controls when to play each sound of the game. Currently we have:
+
+| Sound File     | Description                                   |
+| -------------- | --------------------------------------------- |
+| Crash+SFX.ogg  | Plays when the player crashes their head      |
+| Finish+SFX.ogg | Plays when the player crosses the finish line |
 
 ### Canvas
 
-TBD
+#### Text fields
+
+* **Score Text (TMP)** shows the score while is playing
 
 ---
 
 ## To-do List
 
-TBD
+### Functionality
+
+* Add a local high score system
+* Add an instructions panel
+
+### Bugs
+
+* On WebGL, sometimes game crashes after a few interactions. Need to investigate.

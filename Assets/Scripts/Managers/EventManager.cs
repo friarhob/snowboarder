@@ -44,12 +44,6 @@ public class EventManager : MonoBehaviour
         onGameOver?.Invoke();
     }
 
-    public void resetGame(float timeToReload)
-    {
-        gameOver();
-        Invoke("newGame", timeToReload);
-    }
-
     public void newGame()
     {
         onStartNewGame?.Invoke();
