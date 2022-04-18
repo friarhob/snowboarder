@@ -19,7 +19,6 @@ public class FinishLine : MonoBehaviour
         EventManager.onFinishRun -= this.GenerateSparks;
     }
 
-
     private void GenerateSparks()
     {
         finishEffect.Play();

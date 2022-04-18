@@ -41,11 +41,13 @@ public class EventManager : MonoBehaviour
 
     public void gameOver()
     {
+        Debug.Log("Invoking Game Over");
         onGameOver?.Invoke();
     }
 
     public void newGame()
     {
+        Debug.Log("Invoking New Game");
         onStartNewGame?.Invoke();
     }
 
