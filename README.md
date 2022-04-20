@@ -25,7 +25,7 @@ Simple prototype developed (and changed to include rules, a game mechanic and re
 
 ### Managers
 
-_Note: all managers are singletons, working under a_ `DontDestroyOnLoad()` _parent._
+_Note: all managers are singletons, but we do not use a_ `DontDestroyOnLoad()` _parent._
 
 * **GameManager** hosts game states, and scoring system.
 
