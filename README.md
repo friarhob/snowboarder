@@ -54,6 +54,7 @@ _Note: all managers are singletons, working under a_ `DontDestroyOnLoad()` _pare
 #### Text fields
 
 * **Score Text (TMP)** shows the score while is playing
+* **High Score Text (TMP)** shows the highest local score so far
 
 ---
 
