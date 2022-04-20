@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         EventManager.onGameOver += this.StopGame;
         EventManager.onStartNewGame += this.StartGame;
 
-        Debug.Log("Getting High Score");
+        /* Debug.Log("Getting High Score");
         if (PlayerPrefs.HasKey("HighScore"))
         {
             highestScore = PlayerPrefs.GetFloat("HighScore");
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         {
             highestScore = 0;
         }
-        Debug.Log("High Score Got " + highestScore);
+        Debug.Log("High Score Got " + highestScore);*/
 
         StartGame();
     }
@@ -77,8 +77,8 @@ public class GameManager : MonoBehaviour
         {
             highestScore = score;
 
-            PlayerPrefs.SetFloat("HighScore", highestScore);
-            PlayerPrefs.Save();
+            /*            PlayerPrefs.SetFloat("HighScore", highestScore);
+                        PlayerPrefs.Save();*/
         }
     }
 
