@@ -61,9 +61,4 @@ _Note: all managers are singletons, working under a_ `DontDestroyOnLoad()` _pare
 
 ### Functionality
 
-* Add a local high score system
 * Add an instructions panel
-
-### Bugs
-
-* On WebGL, sometimes game crashes after a few interactions. Need to investigate.

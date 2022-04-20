@@ -8,11 +8,21 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public float score { get; private set; }
+    public float highestScore { get; private set; }
     private bool gameRunning;
 
     void Awake()
     {
         Instance = Instance ? Instance : this;
+
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            highestScore = PlayerPrefs.GetFloat("HighScore");
+        }
+        else
+        {
+            highestScore = 0;
+        }
     }
 
     void Start()
@@ -60,11 +70,19 @@ public class GameManager : MonoBehaviour
     private void StopGame()
     {
         gameRunning = false;
+
+        if (score > highestScore)
+        {
+            highestScore = score;
+            PlayerPrefs.SetFloat("HighScore", highestScore);
+        }
     }
 
     private void StartGame()
     {
         score = 0;
         gameRunning = true;
+
+        Debug.Log("High Score: " + highestScore);
     }
 }

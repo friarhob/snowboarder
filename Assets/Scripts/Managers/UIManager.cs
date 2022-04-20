@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] float timeAfterCrashing;
 
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI highScoreText;
 
     void Awake()
     {
@@ -35,6 +36,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         scoreText.text = "Score: " + Mathf.FloorToInt(GameManager.Instance.score);
+        highScoreText.text = "High Score: " + Mathf.FloorToInt(GameManager.Instance.highestScore);
     }
 
     void PlayerCrash()
