@@ -14,6 +14,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI highScoreText;
 
+    [SerializeField] GameObject instructionsPanel;
+    [SerializeField] GameObject snowboarder;
+    private Rigidbody2D snowboarderRigidbody;
+
     void Awake()
     {
         Instance = Instance ? Instance : this;
@@ -24,6 +28,8 @@ public class UIManager : MonoBehaviour
         EventManager.onStartNewGame += ReloadScene;
         EventManager.onFinishRun += this.FinishGame;
         EventManager.onSnowboarderCrash += this.PlayerCrash;
+
+        snowboarderRigidbody = snowboarder.GetComponent<Rigidbody2D>();
     }
 
     void OnDestroy()
@@ -59,5 +65,12 @@ public class UIManager : MonoBehaviour
     private void ReloadScene()
     {
         SceneManager.LoadScene("MainScene");
+    }
+
+    public void RunGame()
+    {
+        instructionsPanel.SetActive(false);
+        snowboarderRigidbody.freezeRotation = false;
+        snowboarderRigidbody.constraints = RigidbodyConstraints2D.None;
     }
 }
