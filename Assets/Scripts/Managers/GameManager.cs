@@ -14,15 +14,6 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = Instance ? Instance : this;
-
-        if (PlayerPrefs.HasKey("HighScore"))
-        {
-            highestScore = PlayerPrefs.GetFloat("HighScore");
-        }
-        else
-        {
-            highestScore = 0;
-        }
     }
 
     void Start()
@@ -31,6 +22,17 @@ public class GameManager : MonoBehaviour
         EventManager.onForwardFlip += this.ForwardFlip;
         EventManager.onGameOver += this.StopGame;
         EventManager.onStartNewGame += this.StartGame;
+
+        Debug.Log("Getting High Score");
+        if (PlayerPrefs.HasKey("HighScore"))
+        {
+            highestScore = PlayerPrefs.GetFloat("HighScore");
+        }
+        else
+        {
+            highestScore = 0;
+        }
+        Debug.Log("High Score Got " + highestScore);
 
         StartGame();
     }
@@ -74,7 +76,9 @@ public class GameManager : MonoBehaviour
         if (score > highestScore)
         {
             highestScore = score;
+
             PlayerPrefs.SetFloat("HighScore", highestScore);
+            PlayerPrefs.Save();
         }
     }
 
@@ -82,7 +86,5 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         gameRunning = true;
-
-        Debug.Log("High Score: " + highestScore);
     }
 }
