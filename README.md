@@ -56,10 +56,12 @@ _Note: all managers are singletons, but we do not use a_ `DontDestroyOnLoad()` _
 * **Score Text (TMP)** shows the score while is playing
 * **High Score Text (TMP)** shows the highest local score so far
 
+#### Panels
+
+* **InstructionsPanel** opens when the game start, showing the rules, with a button for starting a new game.
+
 ---
 
-## To-do List
+## To-do list
 
-### Functionality
-
-* Add an instructions panel
+* Refactor to control Instructions Panel via events.
